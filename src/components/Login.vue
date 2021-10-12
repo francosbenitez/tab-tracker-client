@@ -3,32 +3,29 @@
     <v-col>
       <v-flex>
         <div class="white elevation-2">
-          <v-toolbar text dense class="cyan" dark>
-            <v-toolbar-title>Register</v-toolbar-title>
+          <v-toolbar flat dense class="cyan" dark>
+            <v-toolbar-title>Login</v-toolbar-title>
           </v-toolbar>
           <div class="pl-4 pr-4 pt-2 pb-2">
-            <form name="tab-tracker-form" autocomplete="off">
-              <v-text-field
-                v-model="email"
-                counter="25"
-                label="Email"
-              ></v-text-field>
-              <br />
-              <v-text-field
-                v-model="password"
-                counter="25"
-                label="Password"
-                type="password"
-                autocomplete="new-password"
-              ></v-text-field>
-            </form>
+            <v-text-field
+              v-model="email"
+              counter="25"
+              label="Email"
+            ></v-text-field>
+            <br />
+            <v-text-field
+              v-model="password"
+              counter="25"
+              label="Password"
+              type="password"
+            ></v-text-field>
             <br />
             <div class="error" v-html="error" />
             <br />
             <v-btn
               class="cyan"
-              @click="register">
-              Register
+              @click="login">
+              Login
             </v-btn>
           </div>
         </div>
@@ -47,19 +44,13 @@ export default {
       error: null
     }
   },
-  watch: {
-    email (value) {
-      console.log('email has changed', value)
-    }
-  },
   methods: {
-    async register () {
+    async login () {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
-        console.log(response.data, 'register button was clicked', this.email, this.password)
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
