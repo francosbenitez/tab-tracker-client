@@ -1,9 +1,9 @@
 <template>
     <div>
-        <Panel title="Song Metadata">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <Panel title="Song Metadata">
                         <b-form>
                             <b-form-group
                                 label="Title"
@@ -12,7 +12,7 @@
                                 >
                                 <b-form-input
                                 id="titleId"
-                                v-model="title"
+                                v-model="song.title"
                                 required
                                 ></b-form-input>
                             </b-form-group>
@@ -24,7 +24,7 @@
                                 >
                                 <b-form-input
                                 id="artistId"
-                                v-model="artist"
+                                v-model="song.artist"
                                 required
                                 ></b-form-input>
                             </b-form-group>
@@ -36,7 +36,7 @@
                                 >
                                 <b-form-input
                                 id="genreId"
-                                v-model="genre"
+                                v-model="song.genre"
                                 label="Genre"
                                 required
                                 ></b-form-input>
@@ -49,7 +49,7 @@
                                 >
                                 <b-form-input
                                 id="albumId"
-                                v-model="album"
+                                v-model="song.album"
                                 required
                                 ></b-form-input>
                             </b-form-group>
@@ -61,7 +61,7 @@
                                 >
                                 <b-form-input
                                 id="albumImageUrlId"
-                                v-model="albumImageUrl"
+                                v-model="song.albumImageUrl"
                                 required
                                 ></b-form-input>
                             </b-form-group>
@@ -73,13 +73,15 @@
                                 >
                                 <b-form-input
                                 id="youtubeId"
-                                v-model="youtubeId"
+                                v-model="song.youtubeId"
                                 required
                                 ></b-form-input>
                             </b-form-group>
                         </b-form>
-                    </div>
-                    <div class="col">
+                    </Panel>
+                </div>
+                <div class="col">
+                    <Panel title="Song Structure">
                         <b-form>
                             <b-form-group
                                 label="Tab"
@@ -88,7 +90,7 @@
                                 >
                                 <b-form-textarea
                                 id="tabId"
-                                v-model="tab"
+                                v-model="song.tab"
                                 required
                                 ></b-form-textarea>
                             </b-form-group>
@@ -100,33 +102,52 @@
                                 >
                                 <b-form-textarea
                                 id="lyricsId"
-                                v-model="lyrics"
+                                v-model="song.lyrics"
                                 label="Lyrics"
                                 required
                                 ></b-form-textarea>
                             </b-form-group>
                         </b-form>
-                    </div>
+                        <b-button class="mt-4"
+                            @click="create">
+                            Create Song
+                        </b-button>
+                    </Panel>
                 </div>
             </div>
-        </Panel>
+        </div>
     </div>
 </template>
 
 <script>
 import Panel from '@/components/Panel'
+import SongsService from '@/services/SongsService'
 
 export default {
   data () {
     return {
-      title: null,
-      artist: null,
-      genre: null,
-      album: null,
-      albumImageUrl: null,
-      youtubeId: null,
-      lyrics: null,
-      tab: null
+      song: {
+        title: null,
+        artist: null,
+        genre: null,
+        album: null,
+        albumImageUrl: null,
+        youtubeId: null,
+        lyrics: null,
+        tab: null
+      }
+    }
+  },
+  methods: {
+    async create () {
+      try {
+        await SongsService.post(this.song)
+        this.$router.push({ // it returns me to the Songs page
+          name: 'songs'
+        })
+      } catch (err) {
+        console.log(err)
+      }
     }
   },
   components: {
