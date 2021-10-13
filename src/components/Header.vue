@@ -5,11 +5,15 @@
         Tab Tracker
       </router-link>
     </b-nav-item>
-    <!-- <b-nav-item>
-      <b-button>
-          Browse
-      </b-button>
-    </b-nav-item> -->
+
+    <b-nav-item>
+      <router-link to="/songs">
+        <b-button variant="link">
+            Browse
+        </b-button>
+      </router-link>
+    </b-nav-item>
+
     <b-nav-item>
       <router-link to="login">
           <b-button variant="link" v-if="!$store.state.isUserLoggedIn">
@@ -24,10 +28,28 @@
           </b-button>
       </router-link>
     </b-nav-item>
+    <b-nav-item>
+      <router-link to="/">
+          <b-button @click="logout" variant="link" v-if="$store.state.isUserLoggedIn">
+            Log Out
+          </b-button>
+      </router-link>
+    </b-nav-item>
   </b-nav>
 </template>
 
 <script>
+export default {
+  methods: {
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name: 'root'
+      })
+    }
+  }
+}
 </script>
 
 <style scope>

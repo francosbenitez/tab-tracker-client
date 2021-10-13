@@ -1,34 +1,44 @@
 <template>
   <b-container fluid>
     <div class="row justify-content-center">
-      <div class="col-md-4 col-md-offset-4">
-        <h1>Register</h1>
-        <b-form>
-          <b-form-group>
-            <b-form-input
-              v-model="email"
+      <div class="col-md-4 col-md-offset-4 border">
+        <Panel title="Register">
+          <b-form>
+            <b-form-group
               label="Email"
-              placeholder="Enter email"
-            ></b-form-input>
-          </b-form-group>
-          <br />
-          <b-form-group>
-            <b-form-input
-              v-model="password"
+              label-for="emailId"
+              description=""
+              >
+              <b-form-input
+                id="emailId"
+                v-model="email"
+                placeholder="Enter email"
+                required
+              ></b-form-input>
+            </b-form-group>
+            <br />
+            <b-form-group
               label="Password"
-              type="password"
-              placeholder="Enter password"
-              required
-            ></b-form-input>
-          </b-form-group>
-        </b-form>
-        <br />
-        <div class="error" v-html="error" />
-        <br />
-        <b-button
-          @click="register">
-          Register
-        </b-button>
+              label-for="passwordId"
+              description=""
+              >
+              <b-form-input
+                v-model="password"
+                id="passwordId"
+                type="password"
+                placeholder="Enter password"
+                required
+              ></b-form-input>
+            </b-form-group>
+          </b-form>
+          <br />
+          <div class="error" v-html="error" />
+          <br />
+          <b-button
+            @click="register">
+            Register
+          </b-button>
+        </Panel>
       </div>
     </div>
   </b-container>
@@ -36,6 +46,8 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel'
+
 export default {
   data () {
     return {
@@ -44,11 +56,11 @@ export default {
       error: null
     }
   },
-  watch: {
-    email (value) {
-      console.log('email has changed', value)
-    }
-  },
+  // watch: {
+  //   email (value) {
+  //     console.log('email has changed', value)
+  //   }
+  // },
   methods: {
     async register () {
       try {
@@ -64,11 +76,15 @@ export default {
       }
     }
   },
-  mounted () {
-    setTimeout(() => {
-      this.email = 'hello world'
-    }, 2000)
+  components: {
+    Panel
   }
+  // },
+  // mounted () {
+  //   setTimeout(() => {
+  //     this.email = 'hello world'
+  //   }, 2000)
+  // }
 }
 </script>
 
