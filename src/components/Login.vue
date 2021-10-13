@@ -1,7 +1,7 @@
 <template>
   <b-container fluid>
     <div class="row justify-content-center">
-        <div class="col-md-4 col-md-offset-4 border">
+        <div class="col-md-4 col-md-offset-4">
         <!-- <h1>Login</h1> -->
         <Panel title="Login">
           <b-form>
@@ -35,10 +35,12 @@
           <br />
           <div class="error" v-html="error" />
           <br />
-          <b-button
-            @click="login">
-            Login
-          </b-button>
+          <div>
+            <b-button
+              @click="login">
+              Login
+            </b-button>
+          </div>
         </Panel>
       </div>
     </div>

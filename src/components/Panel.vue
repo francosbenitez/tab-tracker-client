@@ -1,8 +1,9 @@
 <template>
-  <b-container fluid>
-    <div class="row justify-content-center">
+  <b-container>
+    <div class="row text-center border">
       <!-- <div class="col-md-4 col-md-offset-4"> -->
         <h1>{{title}}</h1>
+        <slot name="action" />
         <slot>
             No slot content defined.
         </slot>

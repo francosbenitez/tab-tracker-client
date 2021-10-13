@@ -1,7 +1,7 @@
 <template>
   <b-container fluid>
     <div class="row justify-content-center">
-      <div class="col-md-4 col-md-offset-4 border">
+      <div class="col-md-4 col-md-offset-4">
         <Panel title="Register">
           <b-form>
             <b-form-group
@@ -34,10 +34,12 @@
           <br />
           <div class="error" v-html="error" />
           <br />
-          <b-button
-            @click="register">
-            Register
-          </b-button>
+          <div>
+            <b-button
+              @click="register">
+              Register
+            </b-button>
+          </div>
         </Panel>
       </div>
     </div>

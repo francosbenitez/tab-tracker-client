@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col">
                     <Panel title="Song Metadata">
-                        <b-form>
+                        <b-form class="needs-validation" novalidate>
                             <b-form-group
                                 label="Title"
                                 label-for="titleId"
@@ -13,7 +13,7 @@
                                 <b-form-input
                                 id="titleId"
                                 v-model="song.title"
-                                required
+                                required="true"
                                 ></b-form-input>
                             </b-form-group>
 
@@ -25,7 +25,7 @@
                                 <b-form-input
                                 id="artistId"
                                 v-model="song.artist"
-                                required
+                                required="true"
                                 ></b-form-input>
                             </b-form-group>
 
@@ -38,7 +38,7 @@
                                 id="genreId"
                                 v-model="song.genre"
                                 label="Genre"
-                                required
+                                required="true"
                                 ></b-form-input>
                             </b-form-group>
 
@@ -50,7 +50,7 @@
                                 <b-form-input
                                 id="albumId"
                                 v-model="song.album"
-                                required
+                                required="true"
                                 ></b-form-input>
                             </b-form-group>
 
@@ -62,7 +62,7 @@
                                 <b-form-input
                                 id="albumImageUrlId"
                                 v-model="song.albumImageUrl"
-                                required
+                                required="true"
                                 ></b-form-input>
                             </b-form-group>
 
@@ -74,7 +74,7 @@
                                 <b-form-input
                                 id="youtubeId"
                                 v-model="song.youtubeId"
-                                required
+                                required="true"
                                 ></b-form-input>
                             </b-form-group>
                         </b-form>
@@ -91,7 +91,7 @@
                                 <b-form-textarea
                                 id="tabId"
                                 v-model="song.tab"
-                                required
+                                required="true"
                                 ></b-form-textarea>
                             </b-form-group>
 
@@ -104,7 +104,7 @@
                                 id="lyricsId"
                                 v-model="song.lyrics"
                                 label="Lyrics"
-                                required
+                                required="true"
                                 ></b-form-textarea>
                             </b-form-group>
                         </b-form>
@@ -112,6 +112,9 @@
                             @click="create">
                             Create Song
                         </b-button>
+                        <div class="error alert alert-danger" role="alert" v-if="error">
+                            {{error}}
+                        </div>
                     </Panel>
                 </div>
             </div>
@@ -135,11 +138,20 @@ export default {
         youtubeId: null,
         lyrics: null,
         tab: null
-      }
+      },
+      error: null
     }
   },
   methods: {
     async create () {
+      this.error = null
+      const areAllFieldsFilledIn = Object
+        .keys(this.song)
+        .every(key => !!this.song[key])
+      if (!areAllFieldsFilledIn) {
+        this.error = 'Please fill in all the required fields.' // added generala validation
+        return
+      }
       try {
         await SongsService.post(this.song)
         this.$router.push({ // it returns me to the Songs page
