@@ -65,15 +65,15 @@ export default {
 
 <style scoped>
 .song-title {
-  font-size: 30px;
+  font-size: 3rem;
 }
 
 .song-genre {
-  font-size: 24px;
+  font-size: 2rem;
 }
 
 .song-artist {
-  font-size: 18px;
+  font-size: 1rem;
 }
 
 .album-image {

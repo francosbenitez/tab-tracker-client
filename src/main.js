@@ -10,11 +10,13 @@ import store from '@/store/store'
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueYouTubeEmbed from 'vue-youtube-embed'
 
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(VueYouTubeEmbed)
 // Vue.use(Vuetify)
 
 sync(store, router)
