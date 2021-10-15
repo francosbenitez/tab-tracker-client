@@ -6,6 +6,14 @@
       </router-link>
     </b-nav-item>
 
+    <!-- <b-nav-item>
+      <router-link :to="{name: 'root'}">
+        <b-button variant="link">
+            Tab Tracker
+        </b-button>
+      </router-link>
+    </b-nav-item> this is other way to do the same -->
+
     <b-nav-item>
       <router-link to="/songs">
         <b-button variant="link">
@@ -45,7 +53,7 @@ export default {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$router.push({
-        name: 'root'
+        name: 'songs'
       })
     }
   }

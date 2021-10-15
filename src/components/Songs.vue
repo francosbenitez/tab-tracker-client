@@ -1,5 +1,6 @@
 <template>
   <b-container>
+    <SongsSearchPanel />
     <Panel title="Songs">
       <!-- <router-link :to="{name: 'songs-create'}"> -->
       <div>
@@ -41,10 +42,12 @@
 <script>
 import Panel from '@/components/Panel'
 import SongsService from '@/services/SongsService'
+import SongsSearchPanel from '@/components/SongsSearchPanel'
 
 export default {
   components: {
-    Panel
+    Panel,
+    SongsSearchPanel
   },
   data () {
     return {
@@ -56,10 +59,18 @@ export default {
       this.$router.push(route)
     }
   },
-  async mounted () {
-    // do a request to the backend for all the songs
-    this.songs = (await SongsService.index()).data
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.songs = (await SongsService.index(value)).data
+      }
+    }
   }
+  // async mounted () {
+  //   // do a request to the backend for all the songs
+  //   this.songs = (await SongsService.index()).data
+  // }
 }
 </script>
 
