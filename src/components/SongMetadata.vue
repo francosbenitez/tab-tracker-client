@@ -14,9 +14,23 @@
             <div class="song-genre">
                 {{song.genre}}
             </div>
-            <b-button slot="action" variant="success" @click="navigateTo({name: 'song-edit', params: {songId: song.id}})">
-              Edit
-            </b-button>
+            <div class="row justify-content-md-center">
+              <div class="col">
+                <b-button slot="action" variant="success" @click="navigateTo({name: 'song-edit', params: {songId: song.id}})">
+                  Edit
+                </b-button>
+              </div>
+              <div class="col">
+                <b-button v-if="isUserLoggedIn && !bookmark" variant="info" @click="setAsBookmark">
+                  Set As Bookmark
+                </b-button>
+              </div>
+              <div class="col">
+                <b-button v-if="isUserLoggedIn && bookmark" variant="info" @click="unsetAsBookmark">
+                  Unset As Bookmark
+                </b-button>
+              </div>
+            </div>
           </div>
           <div class="col-5">
             <img class="album-image" :src="song.albumImageUrl" />
@@ -27,14 +41,66 @@
 
 <script>
 import Panel from '@/components/Panel'
+import {mapState} from 'vuex'
+import BookmarksService from '@/services/BookmarksService'
 
 export default {
   props: [
     'song'
   ],
+  data () {
+    return {
+      bookmark: null
+    }
+  },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn'
+    ])
+  },
+  watch: {
+    async song () {
+      if (!this.isUserLoggedIn) {
+        return
+      }
+      try {
+        this.bookmark = (await BookmarksService.index({
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        })).data
+        // this.isBookmarked = !!bookmark
+        console.log('bookmark', this.bookmark)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  },
+  // async mounted () {
+  // },
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    async setAsBookmark () {
+      try {
+        this.bookmark = (await BookmarksService.post({
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        })).data
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async unsetAsBookmark () {
+      try {
+        await BookmarksService.delete(this.bookmark.id)
+        this.bookmark = null
+        //   songId: this.song.id,
+        //   userId: this.$store.state.user.id
+        // })
+      } catch (err) {
+        console.log(err)
+      }
     }
   },
   components: {
