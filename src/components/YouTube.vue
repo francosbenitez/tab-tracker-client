@@ -1,5 +1,5 @@
 <template>
-    <div class="col-5">
+    <div class="col">
         <Panel title="YouTube Video">
             <youtube :video-id="youtubeId" :player-width="200" :player-height="200"></youtube>
         </Panel>

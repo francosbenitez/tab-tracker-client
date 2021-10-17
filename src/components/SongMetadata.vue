@@ -1,7 +1,7 @@
 <template>
-    <div class="col-5">
+    <div class="col">
       <Panel title="Song Metadata">
-          <div class="col-5 d-flex flex-column text-center">
+          <div class="col d-flex flex-column text-center">
             <div class="song-title">
                 {{song.title}}
             </div>
@@ -32,7 +32,7 @@
               </div>
             </div>
           </div>
-          <div class="col-5">
+          <div class="col">
             <img class="album-image" :src="song.albumImageUrl" />
           </div>
       </Panel>

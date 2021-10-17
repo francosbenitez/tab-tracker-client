@@ -1,18 +1,24 @@
 <template>
   <b-container>
     <div class="row">
-      <SongMetadata :song="song" />
-      <div class="col-5">
+      <div class="col">
+        <SongMetadata :song="song" />
+      </div>
+      <div class="col">
         <Panel title="Tabs">
           {{song.tab}}
         </Panel>
       </div>
-      <div class="col-5">
+    </div>
+    <div class="row">
+      <div class="col">
         <Panel title="Lyrics">
           {{song.lyrics}}
         </Panel>
       </div>
-      <YouTube :youtubeId="song.youtubeId" />
+      <div class="col">
+        <YouTube :youtubeId="song.youtubeId" />
+      </div>
     </div>
   </b-container>
 </template>
