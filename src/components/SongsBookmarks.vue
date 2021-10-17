@@ -22,14 +22,14 @@ export default {
   },
   computed: {
     ...mapState([
-      'isUserLoggedIn'
-      // 'user'
+      'isUserLoggedIn',
+      'user'
     ])
   },
   async mounted () {
     if (this.isUserLoggedIn) {
       this.bookmarks = (await BookmarksService.index({
-        userId: this.$store.state.user.id
+        userId: this.user.id
       })).data
     }
   }
