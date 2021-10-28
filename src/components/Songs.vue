@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col">
         <SongsBookmarks />
+        <RecentlyViewedSongs class="mt-5" />
       </div>
       <div class="col">
         <SongsSearchPanel />
@@ -49,12 +50,14 @@ import Panel from '@/components/Panel'
 import SongsService from '@/services/SongsService'
 import SongsSearchPanel from '@/components/SongsSearchPanel'
 import SongsBookmarks from '@/components/SongsBookmarks'
+import RecentlyViewedSongs from '@/components/RecentlyViewedSongs'
 
 export default {
   components: {
     Panel,
     SongsSearchPanel,
-    SongsBookmarks
+    SongsBookmarks,
+    RecentlyViewedSongs
   },
   data () {
     return {
