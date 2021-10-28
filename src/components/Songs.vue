@@ -7,15 +7,13 @@
       <div class="col">
         <SongsSearchPanel />
         <Panel title="Songs">
-          <!-- <router-link :to="{name: 'songs-create'}"> -->
           <div>
             <b-button slot="action" variant="success" @click="navigateTo({name: 'songs-create'})">
               Add
             </b-button>
           </div>
-          <!-- </router-link> -->
           <div v-for="song in songs" :key="song.id">
-            <div class="row">
+            <div class="row mb-5">
               <div class="col d-flex flex-column text-center">
                 <div class="song-title">
                   {{song.title}}
@@ -23,7 +21,7 @@
                 <div class="song-artist">
                   {{song.artist}}
                 </div>
-                <div>
+                <div class="song-album">
                   {{song.album}}
                 </div>
                 <div class="song-genre">
@@ -76,20 +74,20 @@ export default {
       }
     }
   }
-  // async mounted () {
-  //   // do a request to the backend for all the songs
-  //   this.songs = (await SongsService.index()).data
-  // }
 }
 </script>
 
 <style scoped>
 .song-title {
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 
 .song-genre {
-  font-size: 2rem;
+  font-size: 1rem;
+}
+
+.song-album {
+  font-size: 1rem;
 }
 
 .song-artist {
