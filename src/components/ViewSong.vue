@@ -28,6 +28,8 @@ import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel'
 import SongMetadata from '@/components/SongMetadata'
 import YouTube from '@/components/YouTube'
+import SongHistoryService from '@/services/SongHistoryService'
+import {mapState} from 'vuex'
 
 export default {
   data () {
@@ -35,9 +37,23 @@ export default {
       song: {}
     }
   },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user',
+      'route'
+    ])
+  },
   async mounted () {
-    const songId = this.$store.state.route.params.songId
-    this.song = (await SongsService.show(songId)).data // it is always neccessary to add ".data" at the end, next to parenthesis (without parenthesis it won't work either). Else, nothing will be returned.
+    // const songId = this.$store.state.route.params.songId
+    const songId = this.route.params.songId
+    this.song = (await SongsService.show(songId)).data // it is always necessary to add ".data" at the end, next to parenthesis (without parenthesis it won't work either). Else, nothing will be returned.
+    if (this.isUserLoggedIn) {
+      SongHistoryService.post({
+        songId: songId,
+        userId: this.user.id
+      })
+    }
   },
   components: {
     Panel,
