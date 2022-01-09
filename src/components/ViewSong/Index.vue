@@ -29,7 +29,7 @@ import SongsService from '@/services/SongsService'
 import SongMetadata from '@/components/ViewSong/SongMetadata'
 import YouTube from '@/components/ViewSong/YouTube'
 import SongHistoryService from '@/services/SongHistoryService'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   data () {

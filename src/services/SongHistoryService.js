@@ -14,3 +14,5 @@ export default {
   //   return Api().delete(`bookmarks/${bookmarkId}`)
   // }
 }
+
+// IMPORTANT: SEQUELIZE ADD 'HISTORIES' BY DEFAULT IN THE DATABASE

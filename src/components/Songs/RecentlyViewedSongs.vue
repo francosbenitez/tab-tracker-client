@@ -8,7 +8,7 @@
 
 <script>
 // import Panel from '@/components/Globals/Panel'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 // import BookmarksService from '@/services/BookmarksService'
 import SongHistoryService from '@/services/SongHistoryService'
 
@@ -29,14 +29,10 @@ export default {
   },
   async mounted () {
     if (this.isUserLoggedIn) {
-      this.bookmarks = (await SongHistoryService.index({
+      this.songs = (await SongHistoryService.index({
         userId: this.user.id
       })).data
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
