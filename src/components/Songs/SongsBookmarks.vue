@@ -1,7 +1,8 @@
 <template>
   <Panel title="Bookmarks">
     <div>
-      <table class="table">
+      <SongsTable :items="songsBookmarks" />
+      <!-- <table class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">ID</th>
@@ -18,7 +19,7 @@
             <td>{{ bookmark.genre }}</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
     </div>
   </Panel>
 </template>
@@ -27,6 +28,7 @@
 // import Panel from '@/components/Globals/Panel'
 import { mapState } from 'vuex'
 import BookmarksService from '@/services/BookmarksService'
+import SongsTable from '@/components/Songs/SongsTable'
 
 export default {
   data () {
@@ -35,9 +37,9 @@ export default {
       songsBookmarks: []
     }
   },
-  // components: {
-  //   Panel
-  // },
+  components: {
+    SongsTable
+  },
   computed: {
     ...mapState([
       'isUserLoggedIn',

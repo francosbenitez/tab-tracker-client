@@ -1,7 +1,7 @@
 <template>
     <Panel title="Recently Viewed Songs">
         <div>
-           <b-table striped hover :items="songs"></b-table>
+          <SongsTable :items="songsHistories" />
         </div>
     </Panel>
 </template>
@@ -11,16 +11,18 @@
 import { mapState } from 'vuex'
 // import BookmarksService from '@/services/BookmarksService'
 import SongHistoryService from '@/services/SongHistoryService'
+import SongsTable from '@/components/Songs/SongsTable'
 
 export default {
   data () {
     return {
-      songs: []
+      histories: [],
+      songsHistories: []
     }
   },
-  // components: {
-  //   Panel
-  // },
+  components: {
+    SongsTable
+  },
   computed: {
     ...mapState([
       'isUserLoggedIn',
@@ -32,7 +34,8 @@ export default {
       // this.songs = (await SongHistoryService.index({
       //   userId: this.user.id
       // })).data
-      this.songs = (await SongHistoryService.index()).data
+      this.histories = (await SongHistoryService.index()).data
+      this.songsHistories = this.histories.map(item => item.Song)
     }
   }
 }
