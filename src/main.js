@@ -9,6 +9,7 @@ import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueYouTubeEmbed from 'vue-youtube-embed'
 

@@ -8,6 +8,7 @@
 <script>
 import PageHeader from '@/components/Header.vue'
 import './assets/sass/styles.scss'
+import './assets/sass/bootstrap.scss'
 
 export default {
   name: 'App',
