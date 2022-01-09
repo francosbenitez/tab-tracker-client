@@ -1,22 +1,21 @@
 <template>
-    <Panel title="Search" class="mb-5">
-        <b-form-group
-            label="Search by song title, artist, album, or genre"
-            label-for="searchId"
-            description=""
-            >
-            <b-form-input
-            id="searchId"
-            v-model="search"
-            placeholder="Search..."
-            required
-            ></b-form-input>
-        </b-form-group>
-    </Panel>
+  <Panel title="Search" class="mb-5">
+    <b-form-group
+      label="Search by song title, artist, album, or genre"
+      label-for="searchId"
+      description=""
+      ><b-form-input
+        id="searchId"
+        v-model="search"
+        placeholder="Search..."
+        required
+      ></b-form-input>
+    </b-form-group>
+  </Panel>
 </template>
 
 <script>
-import Panel from '@/components/Panel'
+// import Panel from '@/components/Globals/Panel'
 import _ from 'lodash'
 
 export default {
@@ -44,11 +43,11 @@ export default {
         this.search = value
       }
     }
-
-  },
-  components: {
-    Panel
   }
+  // },
+  // components: {
+  //   Panel
+  // }
 }
 </script>
 

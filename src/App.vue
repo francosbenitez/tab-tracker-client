@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <page-header />
+    <Header />
     <router-view/>
   </div>
 </template>
 
 <script>
-import PageHeader from '@/components/Header.vue'
+import Header from '@/components/Header.vue'
 import './assets/sass/styles.scss'
 import './assets/sass/bootstrap.scss'
 
 export default {
   name: 'App',
   components: {
-    PageHeader
+    Header
   }
 }
 </script>

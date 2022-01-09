@@ -123,7 +123,7 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
+import Panel from '@/components/Globals/Panel'
 import SongsService from '@/services/SongsService'
 
 export default {

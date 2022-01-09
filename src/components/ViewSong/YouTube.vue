@@ -7,17 +7,15 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
+// import Panel from '@/components/Globals/Panel'
 
 export default {
   props: [
     'youtubeId'
-  ],
-  components: {
-    Panel
-  }
+  ]
+  // ],
+  // components: {
+  //   Panel
+  // }
 }
 </script>
-
-<style scoped>
-</style>

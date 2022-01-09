@@ -12,7 +12,7 @@
         </thead>
         <tbody v-for="bookmark in songsBookmarks" :key="bookmark.id">
           <tr>
-            <th scope="row">{{bookmark.id}}</th>
+            <th scope="row">{{ bookmark.id }}</th>
             <td>{{ bookmark.title }}</td>
             <td>{{ bookmark.artist }}</td>
             <td>{{ bookmark.genre }}</td>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
+// import Panel from '@/components/Globals/Panel'
 import { mapState } from 'vuex'
 import BookmarksService from '@/services/BookmarksService'
 
@@ -35,9 +35,9 @@ export default {
       songsBookmarks: []
     }
   },
-  components: {
-    Panel
-  },
+  // components: {
+  //   Panel
+  // },
   computed: {
     ...mapState([
       'isUserLoggedIn',

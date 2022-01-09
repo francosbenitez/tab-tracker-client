@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueYouTubeEmbed from 'vue-youtube-embed'
+import Panel from '@/components/Globals/Panel'
 
 Vue.config.productionTip = false
 
@@ -19,6 +20,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VueYouTubeEmbed)
 // Vue.use(Vuetify)
+Vue.component('Panel', Panel)
 
 sync(store, router)
 
