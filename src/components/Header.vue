@@ -1,49 +1,51 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link to="/" class="navbar-brand">
-        Tab Tracker
-    </router-link>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
-            Browse
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-            User
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">
-              <router-link to="login">
-                <button v-if="!$store.state.isUserLoggedIn">
-                  Login
-                </button>
-              </router-link>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <router-link to="/" class="navbar-brand">
+          Tab Tracker
+      </router-link>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <router-link to="/songs" class="nav-link">
+              Browse
+            </router-link>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+              User
             </a>
-            <a class="dropdown-item" href="#">
-              <router-link to="register">
-                <button v-if="!$store.state.isUserLoggedIn">
-                  Sign Up
-                </button>
-              </router-link>
-            </a>
-            <a class="dropdown-item" href="#">
-              <router-link to="/">
-                <button @click="logout" v-if="$store.state.isUserLoggedIn">
-                  Log Out
-                </button>
-              </router-link>
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item">
+                <router-link to="login">
+                  <button v-if="!$store.state.isUserLoggedIn">
+                    Login
+                  </button>
+                </router-link>
+              </a>
+              <a class="dropdown-item">
+                <router-link to="register">
+                  <button v-if="!$store.state.isUserLoggedIn">
+                    Sign Up
+                  </button>
+                </router-link>
+              </a>
+              <a class="dropdown-item">
+                <router-link to="/">
+                  <button @click="logout" v-if="$store.state.isUserLoggedIn">
+                    Log Out
+                  </button>
+                </router-link>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
   <!-- <div class="container">
     <b-navbar toggleable="lg">
 

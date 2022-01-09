@@ -1,20 +1,38 @@
 <template>
-    <Panel title="Bookmarks">
-        <div>
-           <b-table striped hover :items="bookmarks"></b-table>
-        </div>
-    </Panel>
+  <Panel title="Bookmarks">
+    <div>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Genre</th>
+          </tr>
+        </thead>
+        <tbody v-for="bookmark in songsBookmarks" :key="bookmark.id">
+          <tr>
+            <th scope="row">{{bookmark.id}}</th>
+            <td>{{ bookmark.title }}</td>
+            <td>{{ bookmark.artist }}</td>
+            <td>{{ bookmark.genre }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Panel>
 </template>
 
 <script>
 import Panel from '@/components/Panel'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 import BookmarksService from '@/services/BookmarksService'
 
 export default {
   data () {
     return {
-      bookmarks: []
+      bookmarks: [],
+      songsBookmarks: []
     }
   },
   components: {
@@ -31,11 +49,9 @@ export default {
       this.bookmarks = (await BookmarksService.index({
         userId: this.user.id
       })).data
+      this.songsBookmarks = this.bookmarks.map(item => item.Song)
+      // console.log(this.bookmarks)
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>

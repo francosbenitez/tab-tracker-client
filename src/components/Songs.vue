@@ -1,17 +1,17 @@
 <template>
-  <b-container fluid>
+  <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col-12 col-md-6">
         <SongsBookmarks />
         <RecentlyViewedSongs class="mt-5" />
       </div>
-      <div class="col">
+      <div class="col-12 col-md-6">
         <SongsSearchPanel />
         <Panel title="Songs">
           <div>
-            <b-button slot="action" variant="success" @click="navigateTo({name: 'songs-create'})">
+            <button slot="action" class="btn btn-success" @click="navigateTo({name: 'songs-create'})">
               Add
-            </b-button>
+            </button>
           </div>
           <div v-for="song in songs" :key="song.id">
             <div class="row mb-5">
@@ -42,7 +42,7 @@
         </Panel>
       </div>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
@@ -79,26 +79,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.song-title {
-  font-size: 1.5rem;
-}
-
-.song-genre {
-  font-size: 1rem;
-}
-
-.song-album {
-  font-size: 1rem;
-}
-
-.song-artist {
-  font-size: 1rem;
-}
-
-.album-image {
-  width: 50%;
-  margin: 0 auto;
-}
-</style>

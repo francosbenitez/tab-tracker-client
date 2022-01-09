@@ -12,3 +12,25 @@
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
 }
+
+// SONGS
+.song-title {
+  font-size: 1.5rem;
+}
+
+.song-genre {
+  font-size: 1rem;
+}
+
+.song-album {
+  font-size: 1rem;
+}
+
+.song-artist {
+  font-size: 1rem;
+}
+
+.album-image {
+  width: 50%;
+  margin: 0 auto;
+}

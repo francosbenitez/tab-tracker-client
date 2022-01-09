@@ -1,22 +1,20 @@
 <template>
-  <b-container>
+  <div class="container mt-5">
     <div class="row text-center border">
-      <!-- <div class="col-md-4 col-md-offset-4"> -->
-        <h1>{{title}}</h1>
-        <slot name="action" />
-        <slot>
-            No slot content defined.
-        </slot>
-      <!-- </div> -->
+      <h1>{{ title }}</h1>
+      <slot name="action" />
+      <slot>
+        No slot content defined.
+      </slot>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
 export default {
   // data () {
   //   return {
-  //     title: 'hello world'
+  //     title: 'Default title'
   //   }
   // },
   props: [
@@ -24,7 +22,3 @@ export default {
   ]
 }
 </script>
-
-<style scoped>
-
-</style>
