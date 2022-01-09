@@ -50,8 +50,9 @@ export default {
     this.song = (await SongsService.show(songId)).data // it is always necessary to add ".data" at the end, next to parenthesis (without parenthesis it won't work either). Else, nothing will be returned.
     if (this.isUserLoggedIn) {
       SongHistoryService.post({
-        songId: songId,
-        userId: this.user.id
+        songId: songId
+        // songId: songId,
+        // userId: this.user.id
       })
     }
   },

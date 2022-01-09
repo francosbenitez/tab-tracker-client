@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6" v-if="isUserLoggedIn">
         <SongsBookmarks />
         <RecentlyViewedSongs class="mt-5" />
       </div>
-      <div class="col-12 col-md-6">
+      <div :class="[ isUserLoggedIn ? 'col-md-6' : 'col-12' ]">
         <SongsSearchPanel />
         <Panel title="Songs">
           <div>
@@ -51,6 +51,7 @@ import SongsService from '@/services/SongsService'
 import SongsSearchPanel from '@/components/Songs/SongsSearchPanel'
 import SongsBookmarks from '@/components/Songs/SongsBookmarks'
 import RecentlyViewedSongs from '@/components/Songs/RecentlyViewedSongs'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -58,6 +59,13 @@ export default {
     SongsSearchPanel,
     SongsBookmarks,
     RecentlyViewedSongs
+  },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn'
+      // 'isUserLoggedIn',
+      // 'user'
+    ])
   },
   data () {
     return {
